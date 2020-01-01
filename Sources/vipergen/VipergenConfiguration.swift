@@ -8,8 +8,11 @@
 import Foundation
 
 struct VipergenConfiguration {
-    var moduleName: String
-    var template: String
-    var creator: String
-    var outputFolder: String
+    let moduleName: String
+    let template: String
+    let creator: String
+    let outputFolder: String
+    let projectName: String
+    let date: String
+    let year: String
 }

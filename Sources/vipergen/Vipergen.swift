@@ -19,7 +19,10 @@ class Vipergen {
         self.templateRenderer = templateRenderer
         templateContext = [
             "moduleName": configuration.moduleName,
-            "creator": configuration.creator as Any
+            "creator": configuration.creator,
+            "projectName": configuration.projectName,
+            "date": configuration.date,
+            "year": configuration.year as Any
         ]
     }
     
