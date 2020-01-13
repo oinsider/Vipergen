@@ -22,7 +22,8 @@ class Vipergen {
             "creator": configuration.creator,
             "projectName": configuration.projectName,
             "date": configuration.date,
-            "year": configuration.year as Any
+            "year": configuration.year,
+            "company": configuration.company
         ]
     }
     

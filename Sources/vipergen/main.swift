@@ -15,10 +15,11 @@ let vipergenCommand = command (
     Option<String>("output", default: ".", flag: nil, description: "The output directory", validator: nil),
     Option<String>("projectName", default: "", flag: nil, description: "The name of the project", validator: nil),
     Option<String>("currentDate", default: currentDate, flag: nil, description: "File creation date", validator: nil),
-    Option<String>("year", default: year, flag: nil, description: "Current year", validator: nil)
-) { (moduleName: String, template: String, creator: String, output: String, projectName: String, date: String, year: String)  in
+    Option<String>("year", default: year, flag: nil, description: "Current year", validator: nil),
+    Option<String>("company", default: "Foo Bar", flag: nil, description: "Creators company", validator: nil)
+) { (moduleName: String, template: String, creator: String, output: String, projectName: String, date: String, year: String, company: String)  in
     
-    let configuration = VipergenConfiguration(moduleName: moduleName, template: template, creator: creator, outputFolder: output, projectName: projectName, date: date, year: year)
+    let configuration = VipergenConfiguration(moduleName: moduleName, template: template, creator: creator, outputFolder: output, projectName: projectName, date: date, year: year, company: company)
     let vipergen = Vipergen(withConfiguration: configuration, templateRenderer: TemplateRendererStencil())
     vipergen.generateModule()
     

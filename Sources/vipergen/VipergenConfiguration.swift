@@ -15,4 +15,5 @@ struct VipergenConfiguration {
     let projectName: String
     let date: String
     let year: String
+    let company: String
 }

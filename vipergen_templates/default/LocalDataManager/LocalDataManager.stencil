@@ -3,7 +3,7 @@
 //  {{ projectName }}
 //
 //  Created by {{ creator }} on {{ date }}.
-//  Copyright © {{ year }} {{ creator }}. All rights reserved.
+//  Copyright © {{ year }} {{ company }}. All rights reserved.
 //
 
 class {{ moduleName }}LocalDataManager: {{ moduleName }}LocalDataManagerInputProtocol {
