@@ -26,6 +26,10 @@ Options:
     --template [default: default] - The template (Should exist in the Templates directory)
     --creator [default: John Doe] - The name of the creator
     --output [default: .] - The output directory
+    --projectName [default: ] - The name of the project
+    --currentDate [default: 13/01/20] - File creation date
+    --year [default: 2020] - Current year
+    --company [default: Foo Bar] - Creators company
 ```
 
 ## Uninstallation
