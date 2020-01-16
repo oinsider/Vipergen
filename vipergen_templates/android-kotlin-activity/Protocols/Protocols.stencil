@@ -1,0 +1,16 @@
+package {{ domain }}.Modules.{{ moduleName }}.protocols
+
+interface {{ moduleName }}Protocols {
+    interface {{ moduleName }}ViewInterface {
+        var presenter: {{ moduleName }}PresenterInterface?
+    }
+
+    interface {{ moduleName }}PresenterInterface {
+    }
+
+    interface {{ moduleName }}InteractorProtocol {
+    }
+
+    interface {{ moduleName }}InteractorOutputProtocol {
+    }
+}

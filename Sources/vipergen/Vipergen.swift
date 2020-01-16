@@ -23,7 +23,8 @@ class Vipergen {
             "projectName": configuration.projectName,
             "date": configuration.date,
             "year": configuration.year,
-            "company": configuration.company
+            "company": configuration.company,
+            "domain": configuration.reverseDomain as Any
         ]
     }
     
@@ -72,7 +73,7 @@ class Vipergen {
             // For each template file in the output folder structure, replace it with rendered file
             try moduleFolder.files.recursive.forEach { templateFile in
                 guard let parentFolder = templateFile.parent else { throw NSError(domain: "generateModule", code: -1, userInfo: [NSLocalizedDescriptionKey: "The template file \(templateFile.name) doesn't have a parent\nAborting"]) }
-                try render(template: templateFile.path, toFile: parentFolder.path.appending("\(moduleName)\(templateFile.nameExcludingExtension).swift"))
+                try render(template: templateFile.path, toFile: parentFolder.path.appending("\(moduleName)\(templateFile.nameExcludingExtension).\(configuration.fileExtension)"))
                 try templateFile.delete()
             }
         } catch (let error) {

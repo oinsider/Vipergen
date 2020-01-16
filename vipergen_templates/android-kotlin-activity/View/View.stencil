@@ -1,0 +1,49 @@
+package {{ domain }}.Modules.{{ moduleName }}.view
+
+class {{ moduleName }}Activity : AppCompatActivity(),
+        {{ moduleName }}Protocols.{{ moduleName }}ViewInterface {
+
+    companion object {
+        val TAG = {{ moduleName }}Activity::class.qualifiedName
+    }
+
+    private val navigator: Navigator? by lazy {
+        object : Navigator {
+            override fun applyCommand(command: Command) {
+                if (command is Forward) {
+                    forward(command)
+                }
+            }
+
+            private fun forward(command: Forward) {
+                when (command.screenKey) {
+                }
+            }
+        }
+    }
+
+    override var presenter: {{ moduleName }}Protocols.{{ moduleName }}PresenterInterface? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter?.onCreate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        BaseApplication.INSTANCE.cicerone.navigatorHolder.setNavigator(navigator)
+        presenter?.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter?.onPause()
+        BaseApplication.INSTANCE.cicerone.navigatorHolder.removeNavigator()
+    }
+
+    override fun onDestroy() {
+        presenter?.onDestroy()
+        presenter = null
+        super.onDestroy()
+    }
+}

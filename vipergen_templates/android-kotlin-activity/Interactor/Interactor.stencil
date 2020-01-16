@@ -1,0 +1,7 @@
+package {{ domain }}.Modules.{{ moduleName }}.interactor
+
+class {{ moduleName }}Interactor(var output: {{ moduleName }}Protocols.{{ moduleName }}InteractorOutputProtocol?):
+        {{ moduleName }}Protocols.{{ moduleName }}InteractorProtocol {
+
+    private val TAG = {{ moduleName }}Interactor::class.qualifiedName
+}

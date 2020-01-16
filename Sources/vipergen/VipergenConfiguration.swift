@@ -16,4 +16,6 @@ struct VipergenConfiguration {
     let date: String
     let year: String
     let company: String
+    let reverseDomain: String
+    let fileExtension: String
 }

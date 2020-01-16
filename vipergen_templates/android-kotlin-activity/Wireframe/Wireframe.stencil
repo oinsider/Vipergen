@@ -1,0 +1,48 @@
+package {{ domain }}.Modules.{{ moduleName }}.wireframe
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.FragmentActivity
+import {{ domain }}.Common.BaseApplication
+import {{ domain }}.Modules.{{ moduleName }}.interactor.MainInteractor
+import {{ domain }}.Modules.{{ moduleName }}.presenter.MainPresenter
+import {{ domain }}.Modules.{{ moduleName }}.protocols.MainProtocols
+import {{ domain }}.Modules.{{ moduleName }}.view.MainActivity
+import {{ domain }}.Modules.{{ moduleName }}.interactor.MainBarInteractor
+import {{ domain }}.Modules.{{ moduleName }}.presenter.MainBarPresenter
+import {{ domain }}.Modules.{{ moduleName }}.protocols.MainBarProtocols
+import ru.terrakok.cicerone.Router
+import java.lang.ref.WeakReference
+
+class {{ moduleName }}Wireframe: ViewModel {
+
+    var view: WeakReference<{{ moduleName }}Protocols.{{ moduleName }}ViewInterface>? = null
+    val presenter: {{ moduleName }}Presenter
+    val interactor: {{ moduleName }}Interactor
+    val router: Router? by lazy { BaseApplication.INSTANCE.cicerone.router }
+
+    constructor() : super() {
+        view = null
+        presenter = {{ moduleName }}Presenter()
+        interactor = {{ moduleName }}Interactor(presenter)
+    }
+
+    fun bind(view: {{ moduleName }}Protocols.{{ moduleName }}ViewInterface) {
+        this.view = WeakReference(view)
+        view.presenter = presenter
+        presenter.setView(view)
+        presenter.interactor = interactor
+        setupSessionListener()
+    }
+
+    fun show{{ moduleName }}View() {
+        router?.navigateTo({{ moduleName }}Activity.TAG)
+    }
+
+    companion object{
+        fun create(activity: FragmentActivity): {{ moduleName }}Wireframe{
+            var wireframe = ViewModelProviders.of(activity).get({{ moduleName }}Wireframe::class.java)
+            return wireframe
+        }
+    }
+}

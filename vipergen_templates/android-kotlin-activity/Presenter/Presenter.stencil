@@ -1,0 +1,30 @@
+package {{ domain }}.Modules.{{ moduleName }}.presenter
+
+class {{ moduleName }}Presenter: {{ moduleName }}Protocols.{{ moduleName }}PresenterInterface,
+                     {{ moduleName }}Protocols.{{ moduleName }}InteractorOutputProtocol {
+
+    var view: WeakReference<{{ moduleName }}Protocols.{{ moduleName }}ViewInterface>? = null
+    var interactor: {{ moduleName }}Protocols.{{ moduleName }}InteractorProtocol? = null
+
+    init {
+    }
+
+    override fun setView(view: {{ moduleName }}Protocols.{{ moduleName }}ViewInterface) {
+        this.view = WeakReference(view)
+    }
+
+    override fun onCreate() {
+    }
+
+    override fun onResume() {
+    }
+
+    override fun onPause() {
+    }
+
+    override fun onDestroy() {
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+    }
+}

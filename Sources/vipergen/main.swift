@@ -16,10 +16,12 @@ let vipergenCommand = command (
     Option<String>("projectName", default: "", flag: nil, description: "The name of the project", validator: nil),
     Option<String>("currentDate", default: currentDate, flag: nil, description: "File creation date", validator: nil),
     Option<String>("year", default: year, flag: nil, description: "Current year", validator: nil),
-    Option<String>("company", default: "Foo Bar", flag: nil, description: "Creators company", validator: nil)
-) { (moduleName: String, template: String, creator: String, output: String, projectName: String, date: String, year: String, company: String)  in
+    Option<String>("company", default: "Foo Bar", flag: nil, description: "Creators company", validator: nil),
+    Option<String>("reverseDomain", default: "", flag: nil, description: "App reverse domain", validator: nil),
+    Option<String>("fileExtension", default: "swift", flag: nil, description: "Source file extension", validator: nil)
+) { (moduleName: String, template: String, creator: String, output: String, projectName: String, date: String, year: String, company: String, reverseDomain: String, fileExtension: String)  in
     
-    let configuration = VipergenConfiguration(moduleName: moduleName, template: template, creator: creator, outputFolder: output, projectName: projectName, date: date, year: year, company: company)
+    let configuration = VipergenConfiguration(moduleName: moduleName, template: template, creator: creator, outputFolder: output, projectName: projectName, date: date, year: year, company: company, reverseDomain: reverseDomain, fileExtension: fileExtension)
     let vipergen = Vipergen(withConfiguration: configuration, templateRenderer: TemplateRendererStencil())
     vipergen.generateModule()
     
